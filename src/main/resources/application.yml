@@ -1,0 +1,10 @@
+#启动端口号
+server:
+  port: 8086
+# DataSource Config
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatisdemo?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: admin

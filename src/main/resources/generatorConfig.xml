@@ -1,0 +1,39 @@
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--引入属性文件-->
+    <properties resource="config.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!--配置生成类的插件-->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <property name="caseSensitive" value="true"/>
+        </plugin>
+
+        <!--连接数据库-->
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.user}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+
+        <!--指定model的生成路径-->
+        <javaModelGenerator targetPackage="${modelTargetPackage}"
+                            targetProject="${targetProject}/java"/>
+        <!--指定mapper的生成路径-->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="${targetProject}/resources"/>
+        <!--指定dao的生成路径-->
+        <javaClientGenerator targetPackage="${daoTargetPackage}"
+                             targetProject="${targetProject}/java"
+                             type="XMLMAPPER"/>
+        <!--指定需要生成Model,Dao,Xml的数据表-->
+        <table tableName="classroom"></table>
+
+    </context>
+</generatorConfiguration>
